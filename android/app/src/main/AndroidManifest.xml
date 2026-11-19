@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.front" android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- Cards open behind the fingerprint, face or screen lock. -->
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.POST_PROMOTED_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- Daily step counts from Health Connect, read only. -->
+    <uses-permission android:name="android.permission.health.READ_STEPS" />
+    <uses-permission android:name="android.permission.health.READ_SLEEP" />
+    <uses-permission android:name="android.permission.health.READ_WEIGHT" />
+    <uses-permission android:name="android.permission.health.READ_EXERCISE" />
+
+    <!-- Health Connect as a separate app (Android 13 and older). -->
+    <queries>
+        <package android:name="com.google.android.apps.healthdata" />
+        <!-- Pay with UPI lists the UPI apps installed (PhonePe, Google Pay, Paytm…). -->
+        <!-- They register upi://pay, so the host has to be named for them to show. -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="upi" android:host="pay" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="upi" />
+        </intent>
+        <!-- The common ones by name too (the same list as PayScreen.kt), in case one's filter doesn't match the above. -->
+        <package android:name="com.phonepe.app" />
+        <package android:name="com.google.android.apps.nbu.paisa.user" />
+        <package android:name="net.one97.paytm" />
+        <package android:name="in.org.npci.upiapp" />
+        <package android:name="com.dreamplug.androidapp" />
+        <package android:name="in.amazon.mShop.android.shopping" />
+        <package android:name="com.whatsapp" />
+        <package android:name="money.super.payments" />
+        <package android:name="com.naviapp" />
+        <package android:name="com.mobikwik_new" />
+        <package android:name="com.freecharge.android" />
+        <package android:name="com.myairtelapp" />
+        <package android:name="com.tatadigital.tcp" />
+        <package android:name="club.pop.android" />
+        <package android:name="in.gokiwi.kiwitap" />
+        <package android:name="com.fampay.in" />
+        <package android:name="com.bharatpe.app" />
+        <package android:name="com.snapmint.customerapp" />
+        <package android:name="indwin.c3.shareapp" />
+        <package android:name="money.jupiter" />
+        <package android:name="com.epifi.paisa" />
+        <package android:name="com.nextbillion.groww" />
+        <package android:name="com.sbi.upi" />
+        <package android:name="com.sbi.lotusintouch" />
+        <package android:name="com.csam.icici.bank.imobile" />
+        <package android:name="com.axis.mobile" />
+        <package android:name="com.upi.axispay" />
+        <package android:name="com.msf.kbank.mobile" />
+        <package android:name="com.enstage.wibmo.hdfc" />
+        <package android:name="com.snapwork.hdfc" />
+    </queries>
+
+    <application
+        android:name=".TrackerApp"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyPersonalTracker">
+
+        <!-- Health Connect's "why does this app need it" link opens this. -->
+        <activity
+            android:name=".health.StepsPrivacyActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MyPersonalTracker">
+            <intent-filter>
+                <action android:name="androidx.health.ACTION_SHOW_PERMISSIONS_RATIONALE" />
+            </intent-filter>
+        </activity>
+        <activity-alias
+            android:name="ViewPermissionUsageActivity"
+            android:exported="true"
+            android:targetActivity=".health.StepsPrivacyActivity"
+            android:permission="android.permission.START_VIEW_PERMISSION_USAGE">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW_PERMISSION_USAGE" />
+                <category android:name="android.intent.category.HEALTH_PERMISSIONS" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboard|keyboardHidden|navigation|uiMode|density|fontScale|fontWeightAdjustment|locale|layoutDirection"
+            android:exported="true"
+            android:theme="@style/Theme.MyPersonalTracker.Starting"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <receiver android:name=".reminders.ReminderReceiver" android:exported="false" />
+        <receiver android:name=".reminders.ParentDoneReceiver" android:exported="false" />
+        <receiver android:name=".reminders.BootReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".focus.FocusActionReceiver" android:exported="false" />
+        <receiver android:name=".sheet.PaymentActionReceiver" android:exported="false" />
+        <receiver
+            android:name=".widget.PayWidgetReceiver"
+            android:exported="true"
+            android:label="@string/widget_pay_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_pay_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widget.StreakWidgetReceiver"
+            android:exported="true"
+            android:label="@string/widget_streak_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_streak_info" />
+        </receiver>
+        <receiver
+            android:name=".widget.SpendWidgetReceiver"
+            android:exported="true"
+            android:label="@string/widget_spend_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_spend_info" />
+        </receiver>
+        <receiver
+            android:name=".widget.SplitWidgetReceiver"
+            android:exported="true"
+            android:label="@string/widget_split_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_split_info" />
+        </receiver>
+        <receiver
+            android:name=".widget.StudyWidgetReceiver"
+            android:exported="true"
+            android:label="@string/widget_study_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_study_info" />
+        </receiver>
+        <receiver
+            android:name=".widget.StepsWidgetReceiver"
+            android:exported="true"
+            android:label="@string/widget_steps_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_steps_info" />
+        </receiver>
+        <receiver
+            android:name=".widget.ShoppingWidgetReceiver"
+            android:exported="true"
+            android:label="@string/widget_shopping_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_shopping_info" />
+        </receiver>
+        <receiver
+            android:name=".widget.TodoWidgetReceiver"
+            android:exported="true"
+            android:label="@string/widget_todo_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_todo_info" />
+        </receiver>
+    </application>
+</manifest>

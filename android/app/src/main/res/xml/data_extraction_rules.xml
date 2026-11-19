@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android 12+: what Google backup and moving to a new phone take.
+     Left out: the web app's API key (secrets.xml, encrypted with a key that stays on
+     this phone anyway) and the UPI payment history (upi.xml). Saved cards are in
+     no-backup storage. Android 8–11 read backup_rules.xml instead. -->
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="sharedpref" path="secrets.xml" />
+        <exclude domain="sharedpref" path="upi.xml" />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="sharedpref" path="secrets.xml" />
+        <exclude domain="sharedpref" path="upi.xml" />
+    </device-transfer>
+</data-extraction-rules>

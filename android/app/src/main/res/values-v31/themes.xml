@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.MyPersonalTracker" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <!-- Android 12+ shows its own launch screen first: navy with the icon, then the opening animation. -->
+    <style name="Theme.MyPersonalTracker.Starting" parent="Theme.MyPersonalTracker">
+        <item name="android:windowBackground">@color/splash_navy</item>
+        <item name="android:windowSplashScreenBackground">@color/splash_navy</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">@color/splash_navy</item>
+        <!-- No icon here: the opening animation draws it. -->
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/splash_blank</item>
+    </style>
+</resources>

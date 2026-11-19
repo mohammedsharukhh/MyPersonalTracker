@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyPersonalTracker</string>
+    <string name="widget_streak_name">Streak</string>
+    <string name="widget_streak_description">Your great-day streak and whether today is logged.</string>
+    <string name="widget_todo_name">Sticky Note</string>
+    <string name="widget_todo_description">Today\'s to-dos. Tap a box to tick it off.</string>
+    <string name="shortcut_add_expense_short">Add expense</string>
+    <string name="shortcut_add_expense_long">Add an expense</string>
+    <string name="shortcut_log_today_short">Log today</string>
+    <string name="shortcut_log_today_long">Log today\'s habits</string>
+    <string name="widget_spend_name">Spending today</string>
+    <string name="widget_split_name">Salary split</string>
+    <string name="widget_split_description">This month\'s buckets: what\'s used and what\'s left of each share.</string>
+    <string name="widget_study_name">Study today</string>
+    <string name="widget_study_description">Minutes against today\'s target, your study streak, what\'s due and what\'s next.</string>
+    <string name="widget_steps_name">Steps</string>
+    <string name="widget_pay_name">Scan &amp; Pay</string>
+    <string name="widget_pay_description">Opens the QR scanner: scan, pay with PhonePe, Google Pay or Paytm, and it\'s added to Finance.</string>
+    <string name="widget_steps_description">Today\'s steps against your goal, your step streak and the week.</string>
+    <string name="widget_shopping_name">Shopping list</string>
+    <string name="widget_shopping_description">What\'s left to buy, with an estimate from prices you\'ve paid.</string>
+    <string name="widget_spend_description">Today\'s spend against your daily cap, from your sheet.</string>
+</resources>

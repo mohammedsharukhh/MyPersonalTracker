@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Same navy as the opening animation. -->
+    <color name="splash_navy">#FF254073</color>
+</resources>

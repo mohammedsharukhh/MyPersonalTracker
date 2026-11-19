@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Same navy as the opening animation, so launch goes straight into it. -->
+	<!-- mypersonaltracker://pay — the Pay widget opens the Pay with UPI screen. -->
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>mohammedsharukms.MyPersonalTracker.ai</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>mypersonaltracker</string>
+			</array>
+		</dict>
+	</array>
+	<!-- Sign in with Google (Sheet/Google): paste your iOS OAuth client ID from Google Cloud here (see README). -->
+	<key>GoogleOAuthClientID</key>
+	<string></string>
+	<!-- The UPI apps Pay with UPI can open (to show only the ones installed). -->
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>phonepe</string>
+		<string>tez</string>
+		<string>gpay</string>
+		<string>paytmmp</string>
+		<string>credpay</string>
+		<string>bhim</string>
+		<string>amazonpay</string>
+		<string>whatsapp-consumer</string>
+		<string>navipay</string>
+		<string>mobikwik</string>
+		<string>myairtel</string>
+		<string>super</string>
+		<string>popclubapp</string>
+		<string>kiwi</string>
+		<string>simplypayupi</string>
+		<string>tnupi</string>
+		<string>postpe</string>
+		<string>imobile</string>
+		<string>payzapp</string>
+		<string>fpupi</string>
+		<string>snapmint</string>
+		<string>upi</string>
+	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>LaunchBackground</string>
+	</dict>
+</dict>
+</plist>

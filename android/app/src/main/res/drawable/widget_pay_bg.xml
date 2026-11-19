@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Scan & Pay widget: near-black, navy glow at the top, green rising from the bottom. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#FF08090F" />
+            <corners android:radius="24dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:type="radial" android:gradientRadius="160dp" android:centerX="0.55" android:centerY="0.0"
+                android:startColor="#8C3D4D9E" android:endColor="#003D4D9E" />
+            <corners android:radius="24dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:type="radial" android:gradientRadius="150dp" android:centerX="0.3" android:centerY="1.1"
+                android:startColor="#8C299E66" android:endColor="#00299E66" />
+            <corners android:radius="24dp" />
+        </shape>
+    </item>
+</layer-list>

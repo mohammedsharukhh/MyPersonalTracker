@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Long-press the app icon: jump straight to adding an expense or logging today. -->
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="add_expense"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_add"
+        android:shortcutShortLabel="@string/shortcut_add_expense_short"
+        android:shortcutLongLabel="@string/shortcut_add_expense_long">
+        <intent
+            android:action="com.mohammedsharukms.mypersonaltracker.ADD_EXPENSE"
+            android:targetPackage="com.mohammedsharukms.mypersonaltracker"
+            android:targetClass="com.mohammedsharukms.mypersonaltracker.MainActivity" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="log_today"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_log"
+        android:shortcutShortLabel="@string/shortcut_log_today_short"
+        android:shortcutLongLabel="@string/shortcut_log_today_long">
+        <intent
+            android:action="com.mohammedsharukms.mypersonaltracker.LOG_TODAY"
+            android:targetPackage="com.mohammedsharukms.mypersonaltracker"
+            android:targetClass="com.mohammedsharukms.mypersonaltracker.MainActivity" />
+    </shortcut>
+</shortcuts>

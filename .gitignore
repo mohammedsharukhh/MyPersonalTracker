@@ -1,0 +1,23 @@
+# Xcode
+xcuserdata/
+*.xcuserstate
+DerivedData/
+build/
+*.xcresult
+
+# Android
+android/local.properties
+android/.gradle/
+android/build/
+android/app/build/
+android/.idea/
+android/.kotlin/
+*.iml
+.cxx/
+
+# macOS
+.DS_Store
+
+# Local tool settings
+.claude/
+.kilo/

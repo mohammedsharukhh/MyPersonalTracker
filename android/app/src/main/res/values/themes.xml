@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.MyPersonalTracker" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <!-- Only while the app starts: navy, so launch goes straight into the opening animation. -->
+    <style name="Theme.MyPersonalTracker.Starting" parent="Theme.MyPersonalTracker">
+        <item name="android:windowBackground">@color/splash_navy</item>
+        <item name="android:statusBarColor">@color/splash_navy</item>
+        <item name="android:navigationBarColor">@color/splash_navy</item>
+    </style>
+</resources>
